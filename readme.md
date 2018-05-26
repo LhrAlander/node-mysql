@@ -1,20 +1,7 @@
-const DBInit = require('../DBHelper')
-function AwardPojo() {
-	let awardPOJO = {
-		award_id: '',
-		award_time: '',
-		award_name: '',
-		award_identity: '',
-		award_level: ''
-	}
-	DBInit.call(this, 'award', awardPOJO)
-}
-AwardPojo.prototype = new DBInit()
-AwardPojo.prototype.constructor = AwardPojo
-AwardPojo.prototype.order = function () {
-	console.log('custom your own function here')
-}
-
+## 面向对象地调用mysql库
+在POJO文件夹下建立与数据库表字段名相对应地对象后，使得该类继承自DBHelper类，DBHelper类实现增删改查。
+调用add方法以添加筛选条件，再调用相应的search、delete、update和insert方法完成操作
+````
 let award = new AwardPojo()
 award.add({
 	award_id: 'qwe'
@@ -44,3 +31,4 @@ award.update({
 	.catch(err => {
 		console.log(err)
 	})
+````
